@@ -124,6 +124,11 @@ const CampaignTable = () => {
     return obj;
   }
 
+  /**
+   * For formatting the table date of Budget column
+   * @param num 
+   * @returns 
+   */
   const numberFormatter = (num: number) => {
     let unitlist = ["","K","M","G"];
     let sign = Math.sign(num);
@@ -137,6 +142,12 @@ const CampaignTable = () => {
     return sign*Math.abs(num) + unitlist[unit];
   }
 
+  /**
+   * For setting icons for active and inactive status
+   * @param startDate 
+   * @param endDate 
+   * @returns 
+   */
   const rangeComparer = (startDate: string, endDate: string): boolean => {
       let compareDate = moment();    
       let givenStartDate   = moment(startDate, 'MM/DD/YYYY');   
