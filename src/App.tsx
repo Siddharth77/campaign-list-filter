@@ -1,11 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
+// import React from 'react';
+// import logo from './logo.svg';
+// import { Counter } from './features/counter/Counter';
 import './App.css';
 
-function App() {
+import CampaignListFilterWithTable from './pages/home/CampaignListFilterWithTable';
+
+const App = () => {
   return (
-    <div className="App">
+    <>
+    {/* <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
@@ -51,7 +55,13 @@ function App() {
           </a>
         </span>
       </header>
-    </div>
+    </div> */}
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<CampaignListFilterWithTable/>}/>
+      </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 
