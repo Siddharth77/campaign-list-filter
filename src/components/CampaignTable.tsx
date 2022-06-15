@@ -29,10 +29,7 @@ const useStyles = makeStyles({
     searchContainer: {
       display: 'flex',
       placeContent: 'end',
-      maxWidth: '40%',
-      position: 'absolute',
-      top: '20px',
-      right: '20px'
+      maxWidth: '40%'
     },
     noData: {
       color: 'red'

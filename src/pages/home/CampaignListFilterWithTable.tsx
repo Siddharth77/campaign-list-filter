@@ -12,7 +12,14 @@ const useStyles = makeStyles({
   searchContainer: {
     display: 'flex',
     justifyContent: 'space-between',
-    margin: '20px'
+    margin: '20px',
+    position: 'relative'
+  },
+  dateRangeComp: {
+    position: 'absolute',
+    top: '2.5rem',
+    right: '0',
+    width: '30%'
   },
   tableContainer: {
     margin: '20px'
@@ -26,7 +33,9 @@ const CampaignListFilterWithTable = () => {
     <>
       <div className={classes.mainContainer}>
         <div className={classes.searchContainer}>
-          <DateRangeComp />
+          <div className={classes.dateRangeComp}>
+            <DateRangeComp/>
+          </div>          
           {/* // To Do 
           <SearchBarComp /> */}
         </div>
