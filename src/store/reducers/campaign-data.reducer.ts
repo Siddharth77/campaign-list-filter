@@ -1,8 +1,8 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { ICampaignTable, IUserData } from "../../models/campaigntable.model";
+import { ICampaignTable } from "../../models/campaigntable.model";
 import { SEARCH_CAMPAIGN_VALUE, SEARCH_DATE_RANGE, SET_CAMPAIGN_DATA, SET_MORE_DATA } from "../actions/campaigntable.action";
 import { DateRange } from 'rsuite/esm/DateRangePicker';
-import moment from "moment";
+import { dateRangeFilter, searchFilter, updateCampaignTable } from "../../common/utils";
 
 interface ICampaignStore {
     originalCampaignData: ICampaignTable[],
@@ -53,38 +53,3 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
         return campaigns;
   }
 };
-
-function searchFilter(campaignData: ICampaignTable[], search: string) {
-  return campaignData.filter(val => val.name.toLowerCase().includes(search.toLowerCase()));
-}
-
-function dateRangeFilter(campaignData: ICampaignTable[], dateRange: DateRange) {
-  let selStartDate = moment(dateRange[0]).format("MM/DD/YYYY");
-  let selEndDate = moment(dateRange[1]).format("MM/DD/YYYY");
-  return campaignData.filter((val) => {
-    const startDateInBetween = moment(selStartDate).isBetween(val.startDate, val.endDate, undefined, '[]');
-    if(startDateInBetween) {
-      return true;
-    }
-    const endDateInBetween = moment(selEndDate).isBetween(val.startDate, val.endDate, undefined, '[]');
-    return endDateInBetween;    
-  })
-}
-function updateCampaignTable(campaignData: ICampaignTable[], userData: IUserData[]) {
-  return campaignData.map((campaign) => {
-    let {userId, username} = filterUserById(userData, campaign);
-    return {...campaign, userId, username};
-  })
-}
-
-function filterUserById (userData: IUserData[], campaign: ICampaignTable) {
-    let obj: any = {
-      username: campaign.username || 'Unknown User',
-      userId: campaign.userId
-    };
-    let filteredUser: IUserData[] = userData.filter((user: IUserData) => campaign.userId === user.id);
-    if(filteredUser.length) {
-      obj.username = filteredUser[0].name;
-    };
-    return obj;
-}

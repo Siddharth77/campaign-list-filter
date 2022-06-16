@@ -8,12 +8,11 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ICampaignTable } from '../models/campaigntable.model';
-import moment from 'moment';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { compareStartDateWithEndDate, numberFormatter, rangeComparer } from '../utils';
+import { compareStartDateWithEndDate, numberFormatter, rangeComparer } from '../common/utils';
 
 const useStyles = makeStyles({
     table: {
