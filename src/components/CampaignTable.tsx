@@ -13,7 +13,7 @@ import { ICampaignTable } from '../models/campaigntable.model';
 import moment from 'moment';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { compareStartDateWithEndDate } from '../utils';
+import { compareStartDateWithEndDate, numberFormatter, rangeComparer } from '../utils';
 
 const useStyles = makeStyles({
     table: {
@@ -64,7 +64,6 @@ const StyledTableRow = withStyles((theme) => ({
 
 export const CampaignTable = () => {
   const classes = useStyles();
-  let isInRange = false;
 
   const campaignData = useAppSelector((state) => state.campaigns.finalCampaignData);
   const dispatch = useAppDispatch();
@@ -73,37 +72,6 @@ export const CampaignTable = () => {
     dispatch(getCampaigns());
   }, []);
   
-  /**
-   * For formatting the table date of Budget column
-   * @param num 
-   * @returns 
-   */
-  const numberFormatter = (num: number) => {
-    let unitlist = ["","K","M","G"];
-    let sign = Math.sign(num);
-    let unit = 0;
-    
-    while(Math.abs(num) > 1000)
-    {
-      unit = unit + 1; 
-      num = Math.floor(Math.abs(num) / 100)/10;
-    }
-    return sign*Math.abs(num) + unitlist[unit];
-  }
-
-  /**
-   * For setting icons for active and inactive status
-   * @param startDate 
-   * @param endDate 
-   * @returns 
-   */
-  const rangeComparer = (startDate: string, endDate: string): boolean => {
-      let compareDate = moment();    
-      let givenStartDate   = moment(startDate, 'MM/DD/YYYY');   
-      let givenEndDate     = moment(endDate, 'MM/DD/YYYY');     
-      return isInRange = compareDate.isBetween(givenStartDate, givenEndDate);
-  }
-
   return (
     <div className={classes.tableFilterContainer}>
       <TableContainer component={Paper}>
