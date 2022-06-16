@@ -8,6 +8,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',
+    backgroundColor: 'lightsteelblue'
   },
   searchContainer: {
     display: 'flex',
@@ -20,6 +21,10 @@ const useStyles = makeStyles({
   },
   heading: {
     margin: '20px'
+  },
+  parent: {
+    height: '100vh',
+    backgroundColor: 'lightsteelblue'
   }
 });
 
@@ -27,7 +32,7 @@ const CampaignListFilterWithTable = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <div className={classes.parent}>
       <div className={classes.mainContainer}>
         <h1 className={classes.heading}>Campaign List Filters by Date Range and Name</h1>
         <div className={classes.searchContainer}>
@@ -38,7 +43,7 @@ const CampaignListFilterWithTable = () => {
           <CampaignTable />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

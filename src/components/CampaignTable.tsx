@@ -13,6 +13,7 @@ import { ICampaignTable } from '../models/campaigntable.model';
 import moment from 'moment';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { compareStartDateWithEndDate } from '../utils';
 
 const useStyles = makeStyles({
     table: {
@@ -42,12 +43,13 @@ const useStyles = makeStyles({
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    backgroundColor: 'steelblue',
     color: theme.palette.common.white,
   },
   body: {
     fontSize: 14,
-    backgroundColor: theme.palette.common.white
+    backgroundColor: 'ghostwhite',
+    fontWeight: 500
   },
 }))(TableCell);
 
@@ -129,7 +131,8 @@ export const CampaignTable = () => {
               { campaignData && 
                 campaignData.length > 0 &&
                 campaignData.map((row: ICampaignTable) => (
-                  <StyledTableRow key={row.id}>
+                  compareStartDateWithEndDate(row.startDate, row.endDate) &&
+                  (<StyledTableRow key={row.id}>
                     <StyledTableCell component="th" scope="row">
                       {row.name}
                     </StyledTableCell>
@@ -149,7 +152,7 @@ export const CampaignTable = () => {
                     <StyledTableCell align="center">
                       {`${numberFormatter(row.Budget)} USD`}
                     </StyledTableCell>
-                  </StyledTableRow>
+                  </StyledTableRow>)
                 ))               
               }
             </TableBody>

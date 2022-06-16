@@ -13,7 +13,7 @@ const SearchBarComp = () => {
     };
 
     const cancelSearch = () => {
-        dispatch(doCampaignSearch(''));
+        requestSearch('');
     };
 
     return (

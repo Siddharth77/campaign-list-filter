@@ -1,10 +1,12 @@
 import { Dispatch } from 'redux';
 import { DateRange } from 'rsuite/esm/DateRangePicker';
+import { ICampaignTable } from '../../models/campaigntable.model';
 import { getCampaignData, getUserData } from '../../services/campaigntable.service';
 
 export const SET_CAMPAIGN_DATA = 'SET_CAMPAIGN_DATA';
 export const SEARCH_CAMPAIGN_VALUE = 'SEARCH_CAMPAIGN_VALUE';
 export const SEARCH_DATE_RANGE = 'SEARCH_DATE_RANGE';
+export const SET_MORE_DATA = 'SET_MORE_DATA';
 
 export const getCampaigns = () => async (dispatch: Dispatch) => {
   try {
@@ -18,7 +20,6 @@ export const getCampaigns = () => async (dispatch: Dispatch) => {
   }
 };
 
-
 export const doCampaignSearch = (payload: string) =>  (dispatch: Dispatch) => {
   dispatch({
     type: SEARCH_CAMPAIGN_VALUE,
@@ -26,9 +27,16 @@ export const doCampaignSearch = (payload: string) =>  (dispatch: Dispatch) => {
   });
 };
 
-export const doDateRangeSearch = (payload: DateRange) => (dispatch: Dispatch) => {
+export const doDateRangeSearch = (payload: DateRange | null) => (dispatch: Dispatch) => {
   dispatch({
     type: SEARCH_DATE_RANGE,
-    payload: [...payload],
+    payload
   });
+}
+
+export const setMoreData = (payload: ICampaignTable[]) => (dispatch: Dispatch) => {
+  dispatch({
+    type: SET_MORE_DATA,
+    payload
+  })
 }

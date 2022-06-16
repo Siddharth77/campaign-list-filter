@@ -9,7 +9,8 @@ const preloadedState = {};
 
 export const store = configureStore({
   reducer,
-  preloadedState
+  preloadedState,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 });
 
 export type AppDispatch = typeof store.dispatch;
