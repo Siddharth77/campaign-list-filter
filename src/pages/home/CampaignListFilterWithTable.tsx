@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'column',
-    backgroundColor: 'lightsteelblue'
+    backgroundColor: 'aliceblue'
   },
   searchContainer: {
     display: 'flex',
@@ -20,11 +20,12 @@ const useStyles = makeStyles({
     margin: '20px'
   },
   heading: {
-    margin: '20px'
+    margin: '20px',
+    color: 'steelblue'
   },
   parent: {
     height: '100vh',
-    backgroundColor: 'lightsteelblue'
+    backgroundColor: 'aliceblue'
   }
 });
 

@@ -31,7 +31,8 @@ const useStyles = makeStyles({
       maxWidth: '40%'
     },
     noData: {
-      color: 'red'
+      color: 'red',
+      fontWeight: 500
     },
     loader: {
       position: 'fixed',
@@ -48,7 +49,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-    backgroundColor: 'ghostwhite',
+    backgroundColor: 'white',
     fontWeight: 500
   },
 }))(TableCell);
