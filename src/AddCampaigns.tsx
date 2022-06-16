@@ -1,4 +1,4 @@
-import { ICampaignTable } from "./Models/CampaignTable"
+import { ICampaignTable } from "./models/campaigntable.model"
 
 declare global {
   interface Window {

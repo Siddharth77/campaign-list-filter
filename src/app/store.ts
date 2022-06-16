@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { campaignDataReducer } from '../store/reducers/campaign-data';
+import { campaignDataReducer } from '../store/reducers/campaign-data.reducer';
 
 const reducer = {
   campaigns: campaignDataReducer,

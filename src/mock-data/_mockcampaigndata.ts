@@ -1,4 +1,4 @@
-import { ICampaignTable } from '../Models/CampaignTable';
+import { ICampaignTable } from '../models/campaigntable.model';
 
 export const mockCampaignData: ICampaignTable[] = [
     {'id':1,'name':'Divavu','startDate':'9/19/2017','endDate':'3/9/2018','Budget':3000, 'userId': 3},

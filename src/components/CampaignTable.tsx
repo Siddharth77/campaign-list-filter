@@ -9,9 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 import { useEffect, useState } from 'react';
-import { ICampaignTable } from '../Models/CampaignTable';
+import { ICampaignTable } from '../models/campaigntable.model';
 import moment from 'moment';
-import { getCampaigns } from '../store/actions/campaignTable';
+import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 
 const useStyles = makeStyles({

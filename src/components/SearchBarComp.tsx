@@ -1,7 +1,7 @@
 import SearchBar from "material-ui-search-bar";
 import { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
-import { doCampaignSearch } from "../store/actions/campaignTable";
+import { doCampaignSearch } from "../store/actions/campaigntable.action";
 
 //TO DO LATER
 const SearchBarComp = () => {

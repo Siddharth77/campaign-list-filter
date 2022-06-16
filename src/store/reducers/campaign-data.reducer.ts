@@ -1,6 +1,6 @@
 import { AnyAction } from "@reduxjs/toolkit";
-import { ICampaignTable, IUserData } from "../../Models/CampaignTable";
-import { SEARCH_CAMPAIGN_VALUE, SET_CAMPAIGN_DATA } from "../actions/campaignTable";
+import { ICampaignTable, IUserData } from "../../models/campaigntable.model";
+import { SEARCH_CAMPAIGN_VALUE, SET_CAMPAIGN_DATA } from "../actions/campaigntable.action";
 
 interface ICampaignStore {
     originalCampaignData: ICampaignTable[],

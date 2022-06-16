@@ -1,6 +1,6 @@
-import { makeStyles, Paper } from "@material-ui/core";
+import { Box, makeStyles, Paper } from "@material-ui/core";
 import CampaignTable from "../../components/CampaignTable";
-import DateRangeComp from "../../components/DateRangeComp";
+import DateRangeComp from "../../components/DatePickerComp";
 import SearchBarComp from "../../components/SearchBarComp";
 
 const useStyles = makeStyles({
@@ -37,9 +37,12 @@ const CampaignListFilterWithTable = () => {
         <h1 className={classes.heading}>Campaign List Filters by Date Range and Name</h1>
         <div className={classes.searchContainer}>
           <div className={classes.dateRangeComp}>
-            <DateRangeComp/>
-          </div>          
-          {/* // To Do  */}
+            <div style={{ display: 'flex'}}>
+            <DateRangeComp placeholderVal='Start Date'/>&nbsp; 
+            <Box>to</Box>&nbsp;
+            <DateRangeComp placeholderVal='End Date'/>
+            </div>
+          </div>
           <SearchBarComp />
         </div>
         <div className={classes.tableContainer}>
