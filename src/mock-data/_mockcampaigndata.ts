@@ -1,6 +1,7 @@
 import { ICampaignTable } from '../models/campaigntable.model';
 
 export const mockCampaignData: ICampaignTable[] = [
+    {'id':55,'name':'Siddharth','startDate':'3/5/2018','endDate':'10/2/2025','Budget':900, 'userId': 51},
     {'id':1,'name':'Divavu','startDate':'9/19/2017','endDate':'3/9/2018','Budget':3000, 'userId': 3},
     {'id':2,'name':'Jaxspan','startDate':'11/21/2017','endDate':'2/21/2018','Budget':10000, 'userId': 6},
     {'id':3,'name':'Miboo','startDate':'11/1/2017','endDate':'6/20/2017','Budget':500, 'userId': 7},
@@ -10,6 +11,6 @@ export const mockCampaignData: ICampaignTable[] = [
     {'id':7,'name':'Blogtag','startDate':'6/27/2017','endDate':'1/15/2018','Budget':5200000, 'userId': 2},
     {'id':8,'name':'Rhyzio','startDate':'10/13/2017','endDate':'1/25/2018','Budget':272552, 'userId': 4},
     {'id':9,'name':'Zoomcast','startDate':'9/6/2017','endDate':'11/10/2017','Budget':301919, 'userId': 8},
-    {'id':10,'name':'Realbridge','startDate':'3/5/2018','endDate':'10/2/2017','Budget':505602, 'userId': 5},
-    {'id':55,'name':'Realbridge','startDate':'3/5/2018','endDate':'10/2/2025','Budget':900, 'userId': 51}
+    {'id':10,'name':'Kabir','startDate':'3/5/2018','endDate':'10/2/2017','Budget':505602, 'userId': 5},
+    {'id':56,'name':'Campaign','startDate':'6/16/2022','endDate':'6/16/2024','Budget':900, 'userId': 51},
 ]
