@@ -6,15 +6,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import mockCampaignData from '../mock-data/MockCampaignData.json';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
-import { SetStateAction, useEffect, useState } from 'react';
-import axios from 'axios';
-import SearchBar from "material-ui-search-bar";
-import { CircularProgress } from '@material-ui/core';
-import { ICampaignTable, IUserData } from '../Models/CampaignTable';
+import { useEffect, useState } from 'react';
+import { ICampaignTable } from '../Models/CampaignTable';
 import moment from 'moment';
+import { getCampaigns } from '../store/actions/campaignTable';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 
 const useStyles = makeStyles({
     table: {
@@ -61,69 +59,17 @@ const StyledTableRow = withStyles((theme) => ({
   }
 }))(TableRow);
 
-const CampaignTable = () => {
+export const CampaignTable = () => {
   const classes = useStyles();
-  const [userData, setUserData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [campaignTableData, setCampaignTableData] = useState<ICampaignTable[]>(mockCampaignData);
-  const [search, setSearch] = useState<string>('');
-  const [finalData, setFinalData] = useState<ICampaignTable[]>([]);
-  let updatedData: ICampaignTable[] = finalData;
   let isInRange = false;
-  
+
+  const campaignData = useAppSelector((state) => state.campaigns.finalCampaignData);
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
-    setLoading(true);
-    getUserData();
-  }, [updatedData]);
-
-  const getUserData = async () => {
-    await axios
-      .get(`https://jsonplaceholder.typicode.com/users`)  
-      .then((response: {data: SetStateAction<never[]>}) => {
-        dataRenderTable(campaignTableData);
-        setUserData(response.data);
-        setLoading(false);
-      })
-      .catch((err) => console.log(err)) 
-  }
-
-  const dataRenderTable = (data: ICampaignTable[]) => {
-    for(let i=0; i<data.length; i++ ) {
-      let filteredUserObj = filterUserById(data[i])
-      data[i].userId = filteredUserObj.userId;
-      data[i].username = filteredUserObj.username;
-    }
-    setFinalData(data);
-  }
-
-  const cancelSearch = () => {
-    setSearch('');
-    requestSearch(search);
-  };
-
-  const requestSearch = (searchedVal: string) => {
-    if(searchedVal === '') {
-        updatedData = finalData;
-    } else {
-        updatedData = finalData.filter((row) => {
-          return row.name.toLowerCase().includes(searchedVal.toLowerCase());
-        });
-    }
-    // setFinalData(updatedData);
-  };
-
-  const filterUserById = (data: ICampaignTable) => {
-    let obj: any = {
-      "username": data.username || 'Unknown User',
-      "userId": data.userId
-    };
-    let filteredUser: IUserData[] = userData.filter((user: IUserData) => data.userId === user.id);
-    if(filteredUser.length) {
-      obj.username = filteredUser[0].name;
-    };
-    return obj;
-  }
-
+    dispatch(getCampaigns());
+  }, []);
+  
   /**
    * For formatting the table date of Budget column
    * @param num 
@@ -157,12 +103,6 @@ const CampaignTable = () => {
 
   return (
     <div className={classes.tableFilterContainer}>
-      <SearchBar
-        value={search}
-        onChange={(searchVal) => requestSearch(searchVal)}
-        onCancelSearch={() => cancelSearch()}
-        placeholder="Search by name"
-        className={classes.searchContainer}/>
       <TableContainer component={Paper}>
         <Table className={classes.table} aria-label="campaign-table">
           <TableHead>
@@ -176,14 +116,19 @@ const CampaignTable = () => {
             </TableRow>
           </TableHead>
           { <TableBody>
-              { loading ? 
-                <StyledTableRow>
-                  <StyledTableCell component="th" scope="row">
-                    <CircularProgress className={classes.loader}/>
-                  </StyledTableCell>                  
-                </StyledTableRow>
-                :
-                updatedData.map((row: ICampaignTable) => (
+              {
+                campaignData && 
+                campaignData.length === 0 && (
+                  <StyledTableRow>
+                    <StyledTableCell component="th" scope="row">
+                      <div className={classes.noData}>NO DATA FOUND</div>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                )
+              }
+              { campaignData && 
+                campaignData.length > 0 &&
+                campaignData.map((row: ICampaignTable) => (
                   <StyledTableRow key={row.id}>
                     <StyledTableCell component="th" scope="row">
                       {row.name}

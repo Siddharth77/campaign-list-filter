@@ -17,7 +17,6 @@ const useStyles = makeStyles({
   },
   dateRangeComp: {
     position: 'absolute',
-    top: '2.5rem',
     right: '0',
     width: '30%'
   },
@@ -36,8 +35,8 @@ const CampaignListFilterWithTable = () => {
           <div className={classes.dateRangeComp}>
             <DateRangeComp/>
           </div>          
-          {/* // To Do 
-          <SearchBarComp /> */}
+          {/* // To Do  */}
+          <SearchBarComp />
         </div>
         <div className={classes.tableContainer}>
           <CampaignTable />
