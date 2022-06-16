@@ -17,7 +17,10 @@ const useStyles = makeStyles({
     calendarElement: {
         position: 'absolute',
         top: '50px',
-        zIndex: 2
+        zIndex: 2,
+        border: '1px solid black',
+        borderRadius: '10px',
+        overflow: 'hidden'
     }
 });
 
@@ -60,16 +63,23 @@ const DateRangeComp = () => {
         }        
     }
 
+    const handleSelect = (ranges: any) => {
+        setRange(ranges);
+        console.log(ranges);
+    }
+
     return (
         <div className={classes.calendarWrap}>
             <input
-                value={`${moment(range[0].startDate).format('MM/DD/YYYY')} to ${moment(range[0].endDate).format('MM/DD/YYYY')}`}
+                // value={`${moment(range[0].startDate).format('MM/DD/YYYY')} to ${moment(range[0].endDate).format('MM/DD/YYYY')}`}
                 // value={`${format(range[0].startDate, 'MM/dd/yyyy')} to ${format(range[0].endDate, 'MM/dd/yyyy')}`}
+                value=''
                 placeholder='Start-Date to End-Date'
                 id="dateRange" 
                 name="dateRange"
                 readOnly
                 className={classes.searchRange}
+                onChange={handleSelect}
                 onClick={() => setOpen(open => !open)}
             />
             <div ref={refOne}>

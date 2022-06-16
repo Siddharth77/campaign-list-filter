@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   },
   tableContainer: {
     margin: '20px'
+  },
+  heading: {
+    margin: '20px'
   }
 });
 
@@ -31,6 +34,7 @@ const CampaignListFilterWithTable = () => {
   return (
     <>
       <div className={classes.mainContainer}>
+        <h1 className={classes.heading}>Campaign List Filters by Date Range and Name</h1>
         <div className={classes.searchContainer}>
           <div className={classes.dateRangeComp}>
             <DateRangeComp/>
