@@ -1,12 +1,27 @@
 import SearchBar from "material-ui-search-bar";
 import { useState } from "react";
 import { useAppDispatch } from "../app/hooks";
-import { doCampaignSearch } from "../store/actions/campaigntable.action";
+import { checkPayloadForCampaignData } from "../common/utils";
+import { ICampaignTable } from "../models/campaigntable.model";
+import { doCampaignSearch, setMoreData } from "../store/actions/campaigntable.action";
 
-//TO DO LATER
+declare global {
+    interface Window {
+      AddCampaigns?: any;
+    }
+}
+
 const SearchBarComp = () => {
-    const [search, setSearch] = useState<string>('');
     const dispatch = useAppDispatch();
+    const useAddCampaigns = (data: ICampaignTable[]) => {
+        if(checkPayloadForCampaignData(data)) {
+            dispatch(setMoreData(data));
+        }
+    };
+    if(!window.AddCampaigns) {
+        window.AddCampaigns = useAddCampaigns;
+    }
+    const [search, setSearch] = useState<string>('');
 
     const requestSearch = (searchedVal: string) => {
         setSearch(searchedVal)

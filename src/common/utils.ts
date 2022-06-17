@@ -1,3 +1,4 @@
+import { isObject } from "lodash";
 import moment from "moment";
 import { DateRange } from 'rsuite/esm/DateRangePicker';
 import { ICampaignTable, IUserData } from "../models/campaigntable.model";
@@ -55,7 +56,7 @@ export function dateRangeFilter(campaignData: ICampaignTable[], dateRange: DateR
 }
 
 export function updateCampaignTable(campaignData: ICampaignTable[], userData: IUserData[]) {
-    return campaignData.map((campaign) => {
+    return campaignData.filter((campaign) => compareStartDateWithEndDate(campaign.startDate, campaign.endDate)).map((campaign) => {
         let {userId, username} = filterUserById(userData, campaign);
         return {...campaign, userId, username};
     })
@@ -72,3 +73,22 @@ export function filterUserById (userData: IUserData[], campaign: ICampaignTable)
     };
     return obj;
 }
+
+export function checkPayloadForCampaignData(data: ICampaignTable[]) {
+    const isArray = Array.isArray(data);
+    if(!isArray) { 
+      return false;
+    }
+    return data.reduce((acc, each) => {
+      if(acc) {
+        const isObj = isObject(each);
+        if(!isObj) {
+          return false;
+        }
+        return ['id','name','startDate','endDate','Budget','userId'].every((key) => key in each);
+      }
+      return acc;
+    }, true);
+  }
+
+  

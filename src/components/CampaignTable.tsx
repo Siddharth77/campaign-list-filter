@@ -12,10 +12,10 @@ import { useEffect } from 'react';
 import { ICampaignTable } from '../models/campaigntable.model';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { compareStartDateWithEndDate, numberFormatter } from '../common/utils';
+import { numberFormatter } from '../common/utils';
 // To Do Later
 // import FullPageLoader from './FullPageLoader';
-// import { CircularProgress } from '@material-ui/core';
+import { CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles({
     table: {
@@ -76,6 +76,7 @@ export const CampaignTable = () => {
   const classes = useStyles();
 
   const campaignData = useAppSelector((state) => state.campaigns.finalCampaignData);
+  const loading = useAppSelector((state) => state.campaigns.loading);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -98,14 +99,15 @@ export const CampaignTable = () => {
           </TableHead>
           { <TableBody>
               {
-                campaignData && 
-                campaignData.length === 0 && (
-                  // To Do Loader
-                  // <StyledTableRow>
-                  //   <StyledTableCell component="th" scope="row" className={classes.tableloadercontainer}>
-                  //     <CircularProgress className='loader'/>
-                  //   </StyledTableCell>
-                  // </StyledTableRow>
+                loading && (
+                  <StyledTableRow>
+                    <StyledTableCell component="th" scope="row" className={classes.tableloadercontainer}>
+                      <CircularProgress className={classes.tableloader}/>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                )
+              }
+              { !loading && campaignData && campaignData.length === 0 && (
                   <StyledTableRow>
                     <StyledTableCell component="th" scope="row">
                       <div className={classes.noData}>NO DATA FOUND</div>
@@ -113,10 +115,9 @@ export const CampaignTable = () => {
                   </StyledTableRow>
                 )
               }
-              { campaignData && 
+              { !loading && campaignData && 
                 campaignData.length > 0 &&
                 campaignData.map((row: ICampaignTable) => (
-                  compareStartDateWithEndDate(row.startDate, row.endDate) &&
                   (<StyledTableRow key={row.id}>
                     <StyledTableCell component="th" scope="row">
                       {row.name}

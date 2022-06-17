@@ -12,18 +12,24 @@ export const HIDE_LOADER = 'HIDE_LOADER';
 
 export const getCampaigns = () => async (dispatch: Dispatch) => {
   try {
-    const res = await Promise.all([getCampaignData(), getUserData()]);    
+    const res = await Promise.all([getCampaignData(), getUserData()]);
+    dispatch({
+      type: SHOW_LOADER
+    }); 
     dispatch({
       type: SET_CAMPAIGN_DATA,
       payload: res,
     });
-    
+
   } catch (err) {
     console.log(err);
   }
 };
 
 export const doCampaignSearch = (payload: string) =>  (dispatch: Dispatch) => {
+  dispatch({
+    type: SHOW_LOADER
+  });
   dispatch({
     type: SEARCH_CAMPAIGN_VALUE,
     payload,
@@ -32,6 +38,9 @@ export const doCampaignSearch = (payload: string) =>  (dispatch: Dispatch) => {
 
 export const doDateRangeSearch = (payload: DateRange | null) => (dispatch: Dispatch) => {
   dispatch({
+    type: SHOW_LOADER
+  });
+  dispatch({
     type: SEARCH_DATE_RANGE,
     payload
   });
@@ -39,21 +48,10 @@ export const doDateRangeSearch = (payload: DateRange | null) => (dispatch: Dispa
 
 export const setMoreData = (payload: ICampaignTable[]) => (dispatch: Dispatch) => {
   dispatch({
+    type: SHOW_LOADER
+  });
+  dispatch({
     type: SET_MORE_DATA,
-    payload
-  })
-}
-
-export const showLoader = (payload: boolean) => (dispatch: Dispatch) => {
-  dispatch({
-    type: SHOW_LOADER,
-    payload
-  })
-}
-
-export const hideLoader = (payload: boolean) => (dispatch: Dispatch) => {
-  dispatch({
-    type: HIDE_LOADER,
     payload
   })
 }
