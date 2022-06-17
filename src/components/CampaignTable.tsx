@@ -76,7 +76,6 @@ export const CampaignTable = () => {
   const classes = useStyles();
 
   const campaignData = useAppSelector((state) => state.campaigns.finalCampaignData);
-  console.log(campaignData, 'campaignData');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
