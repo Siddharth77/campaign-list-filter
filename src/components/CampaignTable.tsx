@@ -12,10 +12,10 @@ import { useEffect } from 'react';
 import { ICampaignTable } from '../models/campaigntable.model';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { compareStartDateWithEndDate, numberFormatter, rangeComparer } from '../common/utils';
+import { compareStartDateWithEndDate, numberFormatter } from '../common/utils';
 // To Do Later
 // import FullPageLoader from './FullPageLoader';
-import { CircularProgress } from '@material-ui/core';
+// import { CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles({
     table: {
@@ -81,7 +81,7 @@ export const CampaignTable = () => {
 
   useEffect(() => {
     dispatch(getCampaigns());
-  }, []);
+  },[dispatch]);
   
   return (
     <div className={classes.tableFilterContainer}>

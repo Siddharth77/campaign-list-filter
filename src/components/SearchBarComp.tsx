@@ -9,6 +9,7 @@ const SearchBarComp = () => {
     const dispatch = useAppDispatch();
 
     const requestSearch = (searchedVal: string) => {
+        setSearch(searchedVal)
         dispatch(doCampaignSearch(searchedVal));
     };
 
