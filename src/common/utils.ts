@@ -56,7 +56,8 @@ export function dateRangeFilter(campaignData: ICampaignTable[], dateRange: DateR
 }
 
 export function updateCampaignTable(campaignData: ICampaignTable[], userData: IUserData[]) {
-    return campaignData.filter((campaign) => compareStartDateWithEndDate(campaign.startDate, campaign.endDate)).map((campaign) => {
+    return campaignData.filter((campaign) => compareStartDateWithEndDate(campaign.startDate, campaign.endDate))
+      .map((campaign) => {
         let {userId, username} = filterUserById(userData, campaign);
         return {...campaign, userId, username};
     })
