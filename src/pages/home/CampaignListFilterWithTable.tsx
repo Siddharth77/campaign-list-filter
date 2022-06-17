@@ -35,7 +35,7 @@ const CampaignListFilterWithTable = () => {
   return (
     <div className={classes.parent}>
       <div className={classes.mainContainer}>
-        <h1 className={classes.heading}>Campaign List Filters by Date Range and Name</h1>
+        <h1 className={classes.heading} data-testid="campaign-list-heading">Campaign List Filters by Date Range and Name</h1>
         <div className={classes.searchContainer}>
           <DateRangePickerComp/>          
           <SearchBarComp />
