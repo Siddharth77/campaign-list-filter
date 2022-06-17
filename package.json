@@ -9,12 +9,13 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.0",
-    "@types/jest": "^27.5.2",
+    "@types/jest": "^28.1.2",
     "@types/node": "^17.0.42",
     "@types/react": "^18.0.12",
     "@types/react-date-range": "^1.4.3",
     "@types/react-dom": "^18.0.5",
     "axios": "^0.27.2",
+    "jest": "^28.1.1",
     "lodash": "^4.17.21",
     "material-ui-search-bar": "^1.0.0",
     "moment": "^2.29.3",
@@ -25,13 +26,16 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "rsuite": "^5.15.0",
+    "ts-jest": "^28.0.5",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --env=jsdom",
+    "test:watch": "jest --watch --env=jsdom",
+    "test:coverage": "jest --coverage --env=jsdom",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -39,6 +43,14 @@
       "react-app",
       "react-app/jest"
     ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css|scss)$": "identity-obj-proxy"
+    }
   },
   "browserslist": {
     "production": [
@@ -51,5 +63,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "babel-jest": "^28.1.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-environment-jsdom": "^28.1.1",
+    "jest-jasmine2": "^28.1.1",
+    "regenerator-runtime": "^0.13.9"
   }
 }
