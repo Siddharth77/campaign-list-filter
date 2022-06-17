@@ -13,6 +13,9 @@ import { ICampaignTable } from '../models/campaigntable.model';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { compareStartDateWithEndDate, numberFormatter, rangeComparer } from '../common/utils';
+// To Do Later
+// import FullPageLoader from './FullPageLoader';
+import { CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles({
     table: {
@@ -33,11 +36,19 @@ const useStyles = makeStyles({
       color: 'red',
       fontWeight: 500
     },
-    loader: {
+    tableloadercontainer: {
       position: 'fixed',
-      margin: '0 auto',
+      top: 0,
       left: 0,
-      right: 0
+      width: '100%',
+      height: '100%',
+      backgroundColor: 'rgba(0,0,0, 0.3) !important',
+    },
+    tableloader: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',  
+      zIndex: 1000,
     }
 });
 
@@ -65,6 +76,7 @@ export const CampaignTable = () => {
   const classes = useStyles();
 
   const campaignData = useAppSelector((state) => state.campaigns.finalCampaignData);
+  console.log(campaignData, 'campaignData');
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -89,6 +101,12 @@ export const CampaignTable = () => {
               {
                 campaignData && 
                 campaignData.length === 0 && (
+                  // To Do Loader
+                  // <StyledTableRow>
+                  //   <StyledTableCell component="th" scope="row" className={classes.tableloadercontainer}>
+                  //     <CircularProgress className='loader'/>
+                  //   </StyledTableCell>
+                  // </StyledTableRow>
                   <StyledTableRow>
                     <StyledTableCell component="th" scope="row">
                       <div className={classes.noData}>NO DATA FOUND</div>
@@ -109,7 +127,7 @@ export const CampaignTable = () => {
                     </StyledTableCell>
                     <StyledTableCell align="center">{row.startDate}</StyledTableCell>
                     <StyledTableCell align="center">{row.endDate}</StyledTableCell>
-                    <StyledTableCell align="center"> { rangeComparer(row.startDate, row.endDate) ?
+                    <StyledTableCell align="center"> {row.isActive ?
                       <>
                           <CheckCircleIcon style={{ color: 'green' }}/>
                       </> :
@@ -121,7 +139,7 @@ export const CampaignTable = () => {
                       {`${numberFormatter(row.Budget)} USD`}
                     </StyledTableCell>
                   </StyledTableRow>)
-                ))               
+                ))
               }
             </TableBody>
           }

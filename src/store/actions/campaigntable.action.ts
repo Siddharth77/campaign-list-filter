@@ -7,6 +7,8 @@ export const SET_CAMPAIGN_DATA = 'SET_CAMPAIGN_DATA';
 export const SEARCH_CAMPAIGN_VALUE = 'SEARCH_CAMPAIGN_VALUE';
 export const SEARCH_DATE_RANGE = 'SEARCH_DATE_RANGE';
 export const SET_MORE_DATA = 'SET_MORE_DATA';
+export const SHOW_LOADER = 'SHOW_LOADER';
+export const HIDE_LOADER = 'HIDE_LOADER';
 
 export const getCampaigns = () => async (dispatch: Dispatch) => {
   try {
@@ -15,6 +17,7 @@ export const getCampaigns = () => async (dispatch: Dispatch) => {
       type: SET_CAMPAIGN_DATA,
       payload: res,
     });
+    
   } catch (err) {
     console.log(err);
   }
@@ -37,6 +40,20 @@ export const doDateRangeSearch = (payload: DateRange | null) => (dispatch: Dispa
 export const setMoreData = (payload: ICampaignTable[]) => (dispatch: Dispatch) => {
   dispatch({
     type: SET_MORE_DATA,
+    payload
+  })
+}
+
+export const showLoader = (payload: boolean) => (dispatch: Dispatch) => {
+  dispatch({
+    type: SHOW_LOADER,
+    payload
+  })
+}
+
+export const hideLoader = (payload: boolean) => (dispatch: Dispatch) => {
+  dispatch({
+    type: HIDE_LOADER,
     payload
   })
 }

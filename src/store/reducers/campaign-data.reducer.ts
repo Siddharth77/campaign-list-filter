@@ -1,6 +1,6 @@
 import { AnyAction } from "@reduxjs/toolkit";
 import { ICampaignTable } from "../../models/campaigntable.model";
-import { SEARCH_CAMPAIGN_VALUE, SEARCH_DATE_RANGE, SET_CAMPAIGN_DATA, SET_MORE_DATA } from "../actions/campaigntable.action";
+import { HIDE_LOADER, SEARCH_CAMPAIGN_VALUE, SEARCH_DATE_RANGE, SET_CAMPAIGN_DATA, SET_MORE_DATA, SHOW_LOADER } from "../actions/campaigntable.action";
 import { DateRange } from 'rsuite/esm/DateRangePicker';
 import { dateRangeFilter, searchFilter, updateCampaignTable } from "../../common/utils";
 
@@ -8,7 +8,8 @@ interface ICampaignStore {
     originalCampaignData: ICampaignTable[],
     finalCampaignData: ICampaignTable[],
     search?: string;
-    dateRange?: DateRange
+    dateRange?: DateRange,
+    loading?: boolean
 }
 
 const initialState: ICampaignStore = {
@@ -49,6 +50,10 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
           originalCampaignData: [...originalCampaignData, ...moreDataToSet],
           finalCampaignData: [...originalCampaignData, ...moreDataToSet]
         }
+    case SHOW_LOADER:
+        return { ...campaigns, loading: true}
+    case HIDE_LOADER:
+        return { ...campaigns, loading: false}
     default:
         return campaigns;
   }

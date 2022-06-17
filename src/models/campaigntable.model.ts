@@ -34,6 +34,7 @@ export interface ICampaignTable {
     username?: string,
     startDate: string,
     endDate: string,
+    isActive?: boolean,
     Budget: number,
     userId: number
 }
