@@ -1,5 +1,5 @@
 import { makeStyles } from "@material-ui/core";
-import CampaignTable from "../../components/CampaignTable";
+import CampaignTableComp from "../../components/CampaignTableComp";
 import DateRangePickerComp from "../../components/DateRangePickerComp";
 import SearchBarComp from "../../components/SearchBarComp";
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   }
 });
 
-const CampaignListFilterWithTable = () => {
+const CampaignList = () => {
   const classes = useStyles();
 
   return (
@@ -41,11 +41,11 @@ const CampaignListFilterWithTable = () => {
           <SearchBarComp />
         </div>
         <div className={classes.tableContainer}>
-          <CampaignTable />
+          <CampaignTableComp />
         </div>
       </div>
     </div>
   );
 }
 
-export default CampaignListFilterWithTable;
+export default CampaignList;

@@ -13,8 +13,6 @@ import { ICampaignTable } from '../models/campaigntable.model';
 import { getCampaigns } from '../store/actions/campaigntable.action';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { numberFormatter } from '../common/utils';
-// To Do Later
-// import FullPageLoader from './FullPageLoader';
 import { CircularProgress } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -72,7 +70,7 @@ const StyledTableRow = withStyles((theme) => ({
   }
 }))(TableRow);
 
-export const CampaignTable = () => {
+export const CampaignTableComp = () => {
   const classes = useStyles();
 
   const campaignData = useAppSelector((state) => state.campaigns.finalCampaignData);
@@ -149,4 +147,4 @@ export const CampaignTable = () => {
   );
 }
 
-export default CampaignTable;
+export default CampaignTableComp;
