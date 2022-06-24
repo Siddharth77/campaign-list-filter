@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { store } from '../app/store';
 import CampaignList from '../pages/home/CampaignList';
 
-describe("<App />", () => {
+describe("<CampaignList />", () => {
   test('should render CampaignList component', async () => {
     const { getByText } = render(
       <Provider store={store}>
