@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { store } from '../app/store';
-import App from '../App';
+import CampaignList from '../pages/home/CampaignList';
 
 describe("<App />", () => {
-  test('should render App component', async () => {
+  test('should render CampaignList component', async () => {
     const { getByText } = render(
       <Provider store={store}>
-        <App /> 
+        <CampaignList /> 
       </Provider>
     );
     expect(getByText).toBeTruthy();

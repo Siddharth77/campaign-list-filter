@@ -30,5 +30,5 @@ code {
 }
 
 .rs-picker-default .rs-picker-toggle {
-  z-index: 0;
+  z-index: 0 !important;
 }
