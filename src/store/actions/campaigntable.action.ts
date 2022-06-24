@@ -15,7 +15,7 @@ export const getCampaigns = () => async (dispatch: Dispatch) => {
     const res = await Promise.all([getCampaignData(), getUserData()]);
     dispatch({
       type: SHOW_LOADER
-    }); 
+    });
     dispatch({
       type: SET_CAMPAIGN_DATA,
       payload: res,
@@ -26,7 +26,7 @@ export const getCampaigns = () => async (dispatch: Dispatch) => {
   }
 };
 
-export const doCampaignSearch = (payload: string) =>  (dispatch: Dispatch) => {
+export const doCampaignSearch = (payload: string) => (dispatch: Dispatch) => {
   dispatch({
     type: SHOW_LOADER
   });

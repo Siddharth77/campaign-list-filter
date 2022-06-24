@@ -6,73 +6,73 @@ import { checkPayloadForCampaignData, dateRangeFilter, searchFilter, updateCampa
 import { uniqBy } from "lodash";
 
 interface ICampaignStore {
-    originalCampaignData: ICampaignTable[],
-    finalCampaignData: ICampaignTable[],
-    userData: IUserData[],
-    search?: string;
-    dateRange?: DateRange,
-    loading: boolean
+  originalCampaignData: ICampaignTable[],
+  finalCampaignData: ICampaignTable[],
+  userData: IUserData[],
+  search?: string;
+  dateRange?: DateRange,
+  loading: boolean
 }
 
 const initialState: ICampaignStore = {
-    originalCampaignData: [],
-    finalCampaignData: [],
-    userData: [],
-    loading: true
+  originalCampaignData: [],
+  finalCampaignData: [],
+  userData: [],
+  loading: true
 };
 
 export function campaignDataReducer(campaigns = initialState, action: AnyAction) {
   const { type, payload } = action;
-  const {originalCampaignData, userData, dateRange, search} = campaigns;
+  const { originalCampaignData, userData, dateRange, search } = campaigns;
   switch (type) {
     case SET_CAMPAIGN_DATA:
-        const [campaignData, userDataList] = payload;
-        const finalCampaignDataVal = updateCampaignTable(campaignData, userDataList);
-        return {    
-            originalCampaignData: finalCampaignDataVal, 
-            finalCampaignData: finalCampaignDataVal,
-            userData: userDataList,
-            loading: false
-        };
+      const [campaignData, userDataList] = payload;
+      const finalCampaignDataVal = updateCampaignTable(campaignData, userDataList);
+      return {
+        originalCampaignData: finalCampaignDataVal,
+        finalCampaignData: finalCampaignDataVal,
+        userData: userDataList,
+        loading: false
+      };
     case SEARCH_CAMPAIGN_VALUE:
-        let updatedFinalCampaignData = originalCampaignData;
-        if(dateRange) {
-          updatedFinalCampaignData = dateRangeFilter(updatedFinalCampaignData, dateRange);
-        }
-        updatedFinalCampaignData = searchFilter(updatedFinalCampaignData, payload.trim());
-        return {...campaigns, finalCampaignData: updatedFinalCampaignData, search: payload.trim(), loading: false};
+      let updatedFinalCampaignData = originalCampaignData;
+      if (dateRange) {
+        updatedFinalCampaignData = dateRangeFilter(updatedFinalCampaignData, dateRange);
+      }
+      updatedFinalCampaignData = searchFilter(updatedFinalCampaignData, payload.trim());
+      return { ...campaigns, finalCampaignData: updatedFinalCampaignData, search: payload.trim(), loading: false };
     case SEARCH_DATE_RANGE:
-        let finalCampaignDataValue = originalCampaignData;
-        if(search) {
-          finalCampaignDataValue = searchFilter(finalCampaignDataValue, search);
-        }
-        if (payload) {
-          finalCampaignDataValue = dateRangeFilter(finalCampaignDataValue, payload);
-        }
-        return {...campaigns, finalCampaignData: finalCampaignDataValue, dateRange: payload, loading: false};
+      let finalCampaignDataValue = originalCampaignData;
+      if (search) {
+        finalCampaignDataValue = searchFilter(finalCampaignDataValue, search);
+      }
+      if (payload) {
+        finalCampaignDataValue = dateRangeFilter(finalCampaignDataValue, payload);
+      }
+      return { ...campaigns, finalCampaignData: finalCampaignDataValue, dateRange: payload, loading: false };
     case SET_MORE_DATA:
-        const isValidPayload = checkPayloadForCampaignData(payload);
-        let allData = [...originalCampaignData];
-        if(isValidPayload) {
-          allData = uniqBy([...originalCampaignData, ...payload], ({userId}) => userId );
-        }
-        allData = updateCampaignTable(allData, userData);
-        let filterData = [...allData];
-        if(search) {
-          filterData = searchFilter(filterData, search);
-        }
-        if (dateRange) {
-          filterData = dateRangeFilter(filterData, dateRange);
-        }
-        return {
-          ...campaigns,
-          originalCampaignData: allData,
-          finalCampaignData: filterData,
-          loading: false
-        }
+      const isValidPayload = checkPayloadForCampaignData(payload);
+      let allData = [...originalCampaignData];
+      if (isValidPayload) {
+        allData = uniqBy([...originalCampaignData, ...payload], ({ userId }) => userId);
+      }
+      allData = updateCampaignTable(allData, userData);
+      let filterData = [...allData];
+      if (search) {
+        filterData = searchFilter(filterData, search);
+      }
+      if (dateRange) {
+        filterData = dateRangeFilter(filterData, dateRange);
+      }
+      return {
+        ...campaigns,
+        originalCampaignData: allData,
+        finalCampaignData: filterData,
+        loading: false
+      }
     case SHOW_LOADER:
-        return { ...campaigns, loading: true}
+      return { ...campaigns, loading: true }
     default:
-        return campaigns;
+      return campaigns;
   }
 };

@@ -1,11 +1,11 @@
-import CampaignList from './pages/home/CampaignList';
+import CampaignList from "./pages/home/CampaignList";
 
 const App = () => {
   return (
     <>
-      <CampaignList/>
+      <CampaignList />
     </>
   );
-}
+};
 
 export default App;

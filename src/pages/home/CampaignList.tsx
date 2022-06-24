@@ -5,28 +5,28 @@ import SearchBarComp from "../../components/SearchBarComp";
 
 const useStyles = makeStyles({
   mainContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexDirection: 'column',
-    backgroundColor: 'aliceblue'
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    backgroundColor: "aliceblue",
   },
   searchContainer: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    margin: '20px',
-    position: 'relative'
+    display: "flex",
+    justifyContent: "space-between",
+    margin: "20px",
+    position: "relative",
   },
   tableContainer: {
-    margin: '20px'
+    margin: "20px",
   },
   heading: {
-    margin: '20px',
-    color: 'steelblue'
+    margin: "20px",
+    color: "steelblue",
   },
   parent: {
-    height: '100vh',
-    backgroundColor: 'aliceblue'
-  }
+    height: "100vh",
+    backgroundColor: "aliceblue",
+  },
 });
 
 const CampaignList = () => {
@@ -35,9 +35,11 @@ const CampaignList = () => {
   return (
     <div className={classes.parent}>
       <div className={classes.mainContainer}>
-        <h1 className={classes.heading} data-testid="campaign-list-heading">Campaign List Filters by Date Range and Name</h1>
+        <h1 className={classes.heading} data-testid="campaign-list-heading">
+          Campaign List Filters by Date Range and Name
+        </h1>
         <div className={classes.searchContainer}>
-          <DateRangePickerComp/>          
+          <DateRangePickerComp />
           <SearchBarComp />
         </div>
         <div className={classes.tableContainer}>
@@ -46,6 +48,6 @@ const CampaignList = () => {
       </div>
     </div>
   );
-}
+};
 
 export default CampaignList;
