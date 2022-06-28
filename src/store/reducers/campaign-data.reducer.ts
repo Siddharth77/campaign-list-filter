@@ -54,7 +54,7 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
       const isValidPayload = checkPayloadForCampaignData(payload);
       let allData = [...originalCampaignData];
       if (isValidPayload) {
-        allData = uniqBy([...originalCampaignData, ...payload], ({ userId }) => userId);
+        allData = uniqBy([...originalCampaignData, ...payload], ({ id }) => id);
       }
       allData = updateCampaignTable(allData, userData);
       let filterData = [...allData];
