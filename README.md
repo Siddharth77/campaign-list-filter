@@ -21,7 +21,7 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 ### `npm run lint`
 
-Show eslint errors in project file(if any).\
+Show eslint errors in project file(if any).
 
 ### `npm run build`
 
