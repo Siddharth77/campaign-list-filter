@@ -44,3 +44,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Run AddCampaigns function from console as below sample
+
+AddCampaigns([{"id":180,"name":"D","startDate":"1/19/2022","endDate":"4/30/2022","Budget":88377, "userId": 25}]);
+
+where, "id" should be unique.
