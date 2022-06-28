@@ -13,4 +13,4 @@ export const mockCampaignData: ICampaignTable[] = [
     { "id": 19, "name": "Zoomcast", "startDate": "9/6/2017", "endDate": "11/10/2017", "Budget": 301919, "userId": 8 },
     { "id": 20, "name": "Kabir", "startDate": "3/5/2018", "endDate": "10/2/2017", "Budget": 505602, "userId": 5 },
     { "id": 21, "name": "Varun", "startDate": "6/16/2022", "endDate": "6/16/2024", "Budget": 900, "userId": 10 },
-]
+];

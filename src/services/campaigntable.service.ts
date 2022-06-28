@@ -5,13 +5,13 @@ import { rangeComparer } from "../common/utils";
 
 export const getCampaignData = () => {
     return new Promise<ICampaignTable[]>((resolve) => {
-        const arrWithActive = mockCampaignData?.map(val => ({ ...val, isActive: rangeComparer(val?.startDate, val?.endDate) }))
+        const arrWithActive = mockCampaignData?.map(val => ({ ...val, isActive: rangeComparer(val?.startDate, val?.endDate) }));
         resolve(arrWithActive);
-    })
+    });
 };
 
 export const getUserData = () => {
     return http.get<IUserData[]>("https://jsonplaceholder.typicode.com/users").then(res => {
-        return res.data
+        return res.data;
     });
 };

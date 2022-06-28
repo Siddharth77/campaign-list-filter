@@ -3,7 +3,7 @@ import { campaignDataReducer } from "../store/reducers/campaign-data.reducer";
 
 const reducer = {
   campaigns: campaignDataReducer,
-}
+};
 
 const preloadedState = {};
 

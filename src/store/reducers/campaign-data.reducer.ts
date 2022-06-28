@@ -72,10 +72,10 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
         originalCampaignData: allData,
         finalCampaignData: filterData,
         loading: false
-      }
+      };
     }
     case SHOW_LOADER:
-      return { ...campaigns, loading: true }
+      return { ...campaigns, loading: true };
     default:
       return campaigns;
   }

@@ -44,7 +44,7 @@ export const doDateRangeSearch = (payload: DateRange | null) => (dispatch: Dispa
     type: SEARCH_DATE_RANGE,
     payload
   });
-}
+};
 
 export const setMoreData = (payload: ICampaignTable[]) => (dispatch: Dispatch) => {
   dispatch({
@@ -53,5 +53,5 @@ export const setMoreData = (payload: ICampaignTable[]) => (dispatch: Dispatch) =
   dispatch({
     type: SET_MORE_DATA,
     payload
-  })
-}
+  });
+};

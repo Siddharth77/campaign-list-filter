@@ -5,7 +5,7 @@ import { ICampaignTable, IUserData } from "../models/campaigntable.model";
 
 export const compareStartDateWithEndDate = (startDate: moment.MomentInput, endDate: moment.MomentInput) => {
   return moment(endDate).diff(startDate) > 0;
-}
+};
 
 /**
  * For setting icons for active and inactive status
@@ -18,7 +18,7 @@ export const rangeComparer = (startDate: string, endDate: string): boolean => {
   const givenStartDate = moment(startDate, "MM/DD/YYYY");
   const givenEndDate = moment(endDate, "MM/DD/YYYY");
   return compareDate.isBetween(givenStartDate, givenEndDate, undefined, "[]");
-}
+};
 
 /**
  * For formatting the table date of Budget column
@@ -35,7 +35,7 @@ export const numberFormatter = (num: number) => {
     num = Math.floor(Math.abs(num) / 100) / 10;
   }
   return sign * Math.abs(num) + unitlist[unit];
-}
+};
 
 export function searchFilter(campaignData: ICampaignTable[], search: string) {
   return campaignData.filter(val => val.name.toLowerCase().includes(search.toLowerCase()));
@@ -53,7 +53,7 @@ export function dateRangeFilter(campaignData: ICampaignTable[], dateRange: DateR
     }
     const endDateInBetween = endDateVal.isSameOrAfter(selStartDate) && endDateVal.isSameOrBefore(selEndDate);
     return endDateInBetween;
-  })
+  });
 }
 
 export function updateCampaignTable(campaignData: ICampaignTable[], userData: IUserData[]) {
@@ -61,7 +61,7 @@ export function updateCampaignTable(campaignData: ICampaignTable[], userData: IU
     .map((campaign) => {
       const { userId, username } = filterUserById(userData, campaign);
       return { ...campaign, userId, username };
-    })
+    });
 }
 
 export function filterUserById(userData: IUserData[], campaign: ICampaignTable) {

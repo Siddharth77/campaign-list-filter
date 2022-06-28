@@ -37,7 +37,8 @@
     "test:watch": "jest --watch --env=jsdom",
     "test:coverage": "jest --coverage --env=jsdom",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix --ext .js,.ts,.jsx,.tsx ."
   },
   "eslintConfig": {
     "extends": [
