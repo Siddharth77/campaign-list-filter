@@ -14,9 +14,9 @@ export const compareStartDateWithEndDate = (startDate: moment.MomentInput, endDa
  * @returns 
  */
 export const rangeComparer = (startDate: string, endDate: string): boolean => {
-  let compareDate = moment();
-  let givenStartDate = moment(startDate, 'MM/DD/YYYY');
-  let givenEndDate = moment(endDate, 'MM/DD/YYYY');
+  const compareDate = moment();
+  const givenStartDate = moment(startDate, 'MM/DD/YYYY');
+  const givenEndDate = moment(endDate, 'MM/DD/YYYY');
   return compareDate.isBetween(givenStartDate, givenEndDate, undefined, '[]');
 }
 
@@ -26,8 +26,8 @@ export const rangeComparer = (startDate: string, endDate: string): boolean => {
  * @returns 
  */
 export const numberFormatter = (num: number) => {
-  let unitlist = ["", "K", "M", "G"];
-  let sign = Math.sign(num);
+  const unitlist = ["", "K", "M", "G"];
+  const sign = Math.sign(num);
   let unit = 0;
 
   while (Math.abs(num) > 1000) {
@@ -42,8 +42,8 @@ export function searchFilter(campaignData: ICampaignTable[], search: string) {
 }
 
 export function dateRangeFilter(campaignData: ICampaignTable[], dateRange: DateRange) {
-  let selStartDate = moment(dateRange[0]).format("MM/DD/YYYY");
-  let selEndDate = moment(dateRange[1]).format("MM/DD/YYYY");
+  const selStartDate = moment(dateRange[0]).format("MM/DD/YYYY");
+  const selEndDate = moment(dateRange[1]).format("MM/DD/YYYY");
   return campaignData.filter((val) => {
     const startDateVal = moment(val.startDate);
     const endDateVal = moment(val.endDate);
@@ -59,20 +59,20 @@ export function dateRangeFilter(campaignData: ICampaignTable[], dateRange: DateR
 export function updateCampaignTable(campaignData: ICampaignTable[], userData: IUserData[]) {
   return campaignData.filter((campaign) => compareStartDateWithEndDate(campaign.startDate, campaign.endDate))
     .map((campaign) => {
-      let { userId, username } = filterUserById(userData, campaign);
+      const { userId, username } = filterUserById(userData, campaign);
       return { ...campaign, userId, username };
     })
 }
 
 export function filterUserById(userData: IUserData[], campaign: ICampaignTable) {
-  let obj: any = {
+  const obj = {
     username: campaign.username || 'Unknown User',
     userId: campaign.userId
   };
-  let filteredUser: IUserData[] = userData.filter((user: IUserData) => campaign.userId === user.id);
+  const filteredUser: IUserData[] = userData.filter((user: IUserData) => campaign.userId === user.id);
   if (filteredUser.length) {
     obj.username = filteredUser[0].name;
-  };
+  }
   return obj;
 }
 

@@ -25,7 +25,7 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
   const { type, payload } = action;
   const { originalCampaignData, userData, dateRange, search } = campaigns;
   switch (type) {
-    case SET_CAMPAIGN_DATA:
+    case SET_CAMPAIGN_DATA: {
       const [campaignData, userDataList] = payload;
       const finalCampaignDataVal = updateCampaignTable(campaignData, userDataList);
       return {
@@ -34,14 +34,16 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
         userData: userDataList,
         loading: false
       };
-    case SEARCH_CAMPAIGN_VALUE:
+    }
+    case SEARCH_CAMPAIGN_VALUE: {
       let updatedFinalCampaignData = originalCampaignData;
       if (dateRange) {
         updatedFinalCampaignData = dateRangeFilter(updatedFinalCampaignData, dateRange);
       }
       updatedFinalCampaignData = searchFilter(updatedFinalCampaignData, payload.trim());
       return { ...campaigns, finalCampaignData: updatedFinalCampaignData, search: payload.trim(), loading: false };
-    case SEARCH_DATE_RANGE:
+    }
+    case SEARCH_DATE_RANGE: {
       let finalCampaignDataValue = originalCampaignData;
       if (search) {
         finalCampaignDataValue = searchFilter(finalCampaignDataValue, search);
@@ -50,7 +52,8 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
         finalCampaignDataValue = dateRangeFilter(finalCampaignDataValue, payload);
       }
       return { ...campaigns, finalCampaignData: finalCampaignDataValue, dateRange: payload, loading: false };
-    case SET_MORE_DATA:
+    }
+    case SET_MORE_DATA: {
       const isValidPayload = checkPayloadForCampaignData(payload);
       let allData = [...originalCampaignData];
       if (isValidPayload) {
@@ -70,9 +73,10 @@ export function campaignDataReducer(campaigns = initialState, action: AnyAction)
         finalCampaignData: filterData,
         loading: false
       }
+    }
     case SHOW_LOADER:
       return { ...campaigns, loading: true }
     default:
       return campaigns;
   }
-};
+}

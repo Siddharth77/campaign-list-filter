@@ -10,7 +10,7 @@ import {
 
 declare global {
   interface Window {
-    AddCampaigns?: any;
+    AddCampaigns: (data: ICampaignTable[]) => void;
   }
 }
 

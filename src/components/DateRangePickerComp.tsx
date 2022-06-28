@@ -4,7 +4,7 @@ import { DateRange } from "rsuite/esm/DateRangePicker";
 import { useAppDispatch } from "../app/hooks";
 import { doDateRangeSearch } from "../store/actions/campaigntable.action";
 
-const DateRangePickerComp = (props: any) => {
+const DateRangePickerComp = () => {
   const dispatch = useAppDispatch();
   const validateDateRange = (searchDate: DateRange | null) => {
     dispatch(doDateRangeSearch(searchDate));
