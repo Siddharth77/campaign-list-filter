@@ -1,7 +1,7 @@
-import http from './http-common';
-import { mockCampaignData } from '../mock-data/_mockcampaigndata'
-import { ICampaignTable, IUserData } from '../models/campaigntable.model';
-import { rangeComparer } from '../common/utils';
+import http from "./http-common";
+import { mockCampaignData } from "../mock-data/_mockcampaigndata";
+import { ICampaignTable, IUserData } from "../models/campaigntable.model";
+import { rangeComparer } from "../common/utils";
 
 export const getCampaignData = () => {
     return new Promise<ICampaignTable[]>((resolve) => {

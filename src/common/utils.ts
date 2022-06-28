@@ -1,6 +1,6 @@
 import { isObject } from "lodash";
 import moment from "moment";
-import { DateRange } from 'rsuite/esm/DateRangePicker';
+import { DateRange } from "rsuite/esm/DateRangePicker";
 import { ICampaignTable, IUserData } from "../models/campaigntable.model";
 
 export const compareStartDateWithEndDate = (startDate: moment.MomentInput, endDate: moment.MomentInput) => {

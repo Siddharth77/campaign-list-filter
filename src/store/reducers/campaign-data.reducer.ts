@@ -1,7 +1,7 @@
 import { AnyAction } from "@reduxjs/toolkit";
 import { ICampaignTable, IUserData } from "../../models/campaigntable.model";
 import { SEARCH_CAMPAIGN_VALUE, SEARCH_DATE_RANGE, SET_CAMPAIGN_DATA, SET_MORE_DATA, SHOW_LOADER } from "../actions/campaigntable.action";
-import { DateRange } from 'rsuite/esm/DateRangePicker';
+import { DateRange } from "rsuite/esm/DateRangePicker";
 import { checkPayloadForCampaignData, dateRangeFilter, searchFilter, updateCampaignTable } from "../../common/utils";
 import { uniqBy } from "lodash";
 
