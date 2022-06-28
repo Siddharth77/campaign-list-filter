@@ -11,7 +11,7 @@ export const getCampaignData = () => {
 };
 
 export const getUserData = () => {
-    return http.get<IUserData[]>(`https://jsonplaceholder.typicode.com/users`).then(res => {
+    return http.get<IUserData[]>("https://jsonplaceholder.typicode.com/users").then(res => {
         return res.data
     });
 };

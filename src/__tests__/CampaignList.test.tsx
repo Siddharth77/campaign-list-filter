@@ -2,7 +2,7 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../app/store";
 import CampaignList from "../pages/home/CampaignList";
-import '@testing-library/jest-dom/extend-expect';
+import "@testing-library/jest-dom/extend-expect";
 
 describe("<CampaignList />", () => {
   test("should check for CampaignList component test id defined", async () => {

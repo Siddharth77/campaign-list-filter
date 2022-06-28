@@ -1,4 +1,4 @@
-import type {Config} from '@jest/types';
+import type {Config} from "@jest/types";
 
 // Sync object
 const config: Config.InitialOptions = {
@@ -30,9 +30,9 @@ const config: Config.InitialOptions = {
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
 
   moduleNameMapper: {
-    '\\.(css|scss)$': 'identity-obj-proxy'
+    "\\.(css|scss)$": "identity-obj-proxy"
   },
-  testEnvironment: 'jsdom'
+  testEnvironment: "jsdom"
 };
 
 export default config;

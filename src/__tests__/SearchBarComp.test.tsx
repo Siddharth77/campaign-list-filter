@@ -4,7 +4,7 @@ import { store } from "../app/store";
 import SearchBarComp from "../components/SearchBarComp";
 import "@testing-library/jest-dom";
 
-test('search value is empty when not given anything', () => {
+test("search value is empty when not given anything", () => {
   render(
     <Provider store={store}>
       <SearchBarComp />

@@ -15,9 +15,9 @@ export const compareStartDateWithEndDate = (startDate: moment.MomentInput, endDa
  */
 export const rangeComparer = (startDate: string, endDate: string): boolean => {
   const compareDate = moment();
-  const givenStartDate = moment(startDate, 'MM/DD/YYYY');
-  const givenEndDate = moment(endDate, 'MM/DD/YYYY');
-  return compareDate.isBetween(givenStartDate, givenEndDate, undefined, '[]');
+  const givenStartDate = moment(startDate, "MM/DD/YYYY");
+  const givenEndDate = moment(endDate, "MM/DD/YYYY");
+  return compareDate.isBetween(givenStartDate, givenEndDate, undefined, "[]");
 }
 
 /**
@@ -66,7 +66,7 @@ export function updateCampaignTable(campaignData: ICampaignTable[], userData: IU
 
 export function filterUserById(userData: IUserData[], campaign: ICampaignTable) {
   const obj = {
-    username: campaign.username || 'Unknown User',
+    username: campaign.username || "Unknown User",
     userId: campaign.userId
   };
   const filteredUser: IUserData[] = userData.filter((user: IUserData) => campaign.userId === user.id);
@@ -87,7 +87,7 @@ export function checkPayloadForCampaignData(data: ICampaignTable[]) {
       if (!isObj) {
         return false;
       }
-      return ['id', 'name', 'startDate', 'endDate', 'Budget', 'userId'].every((key) => key in each);
+      return ["id", "name", "startDate", "endDate", "Budget", "userId"].every((key) => key in each);
     }
     return acc;
   }, true);
