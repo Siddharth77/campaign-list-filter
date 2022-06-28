@@ -5,7 +5,7 @@ import "./index.css";
 import { store } from "./app/store";
 import CampaignList from "./pages/home/CampaignList";
 
-const container = document.getElementById("root")!;
+const container = document.getElementById("root") as HTMLElement;
 const root = createRoot(container);
 
 root.render(
