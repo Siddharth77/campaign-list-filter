@@ -8,9 +8,11 @@ describe("<CampaignList />", () => {
   test("should check for CampaignList component test id defined", async () => {
     const { getByTestId } = render(
       <Provider store={store}>
-        <CampaignList /> 
+        <CampaignList />
       </Provider>
     );
-    expect(getByTestId("campaign-list-heading")).toHaveTextContent("Campaign List Filters by Date Range and Name");
+    expect(getByTestId("campaign-list-heading")).toHaveTextContent(
+      "Campaign List Filters by Date Range and Name"
+    );
   });
 });
