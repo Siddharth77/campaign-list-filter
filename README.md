@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+This project has the list of campaigns, which will filter out date range, and name wise filter.This is bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
 
 ## Available Scripts
 
@@ -49,8 +49,17 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Run AddCampaigns function from console as below sample
+## You can add more campaigns from console using AddCampaigns function from console like below:
 
-AddCampaigns([{"id":180,"name":"D","startDate":"1/19/2022","endDate":"4/30/2022","Budget":88377, "userId": 25}]);
+AddCampaigns([
+    {
+        "id":180,
+        "name":"D",
+        "startDate":"1/19/2022",
+        "endDate":"4/30/2022",
+        "Budget":88377, 
+        "userId": 25
+    }
+]);
 
-where, "id" should be unique.
+where, "id" should be unique and endDate must be after startDate.
