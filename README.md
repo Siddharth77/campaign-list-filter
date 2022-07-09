@@ -49,7 +49,7 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## You can add more campaigns from console using AddCampaigns function from console like below:
+## You can add more campaigns from console using AddCampaigns function like below:
 
 AddCampaigns([
     {
